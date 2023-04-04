@@ -6,22 +6,18 @@ typedef struct item{
     struct item* proximo;
 } Item;
 
+int novo_item_no_final(Item* anterior){   
+}
+
 int main() {
 
     Item* primeiro = NULL;
-    Item* segundo = NULL;
 
     primeiro = (Item*)malloc(sizeof(Item));
-    segundo = (Item*)malloc(sizeof(Item));
 
-    primeiro->valor = 1;
-    primeiro->proximo = segundo;
-
-    segundo->valor = 22;
-    segundo->proximo = NULL;    
-
+    scanf("%d", &primeiro->valor;);
+    primeiro->proximo = NULL; 
 
     printf("%d, %d\n", primeiro->valor, primeiro->proximo);
-    printf("%d, %d\n", segundo->valor, segundo->proximo);
     return 0;
 }
