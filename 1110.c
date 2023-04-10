@@ -16,9 +16,6 @@ item* criar_item();
 void adicionar_item_inicio_lista(lista_encadeada* lista, int valor);
 void adicionar_item_final_lista(lista_encadeada* lista, int valor);
 
-int novo_item_no_final(item* anterior){   
-}
-
 int main() {
 
     item* primeiro;
@@ -32,9 +29,6 @@ int main() {
 
     segundo->valor = 22;
     segundo->proximo_item = NULL;    
-
-    scanf("%d", &primeiro->valor);
-    primeiro->proximo_item = NULL; 
 
     printf("%d, %d\n", primeiro->valor, primeiro->proximo_item);
     printf("%d, %d\n", segundo->valor, segundo->proximo_item);
