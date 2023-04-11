@@ -1,15 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct lista_encadeada {
-    int quantidade_itens;
-    item* inicio;
-} lista_encadeada;
-
 typedef struct item {
     int valor;
     struct item* proximo_item;
 } item;
+
+typedef struct lista_encadeada {
+    int quantidade_itens;
+    item* inicio;
+} lista_encadeada;
 
 lista_encadeada* criar_lista_encadeada();
 item* criar_item();
@@ -54,8 +54,7 @@ item* criar_item() {
 
 void adicionar_item_inicio_lista(lista_encadeada* lista, int valor) {
 
-    item* novo_item;
-    novo_item = criar_item();
+    item* novo_item = criar_item();
 
     novo_item->valor = valor;
     
@@ -67,4 +66,23 @@ void adicionar_item_inicio_lista(lista_encadeada* lista, int valor) {
     }
 
     lista->quantidade_itens++;
+}
+
+void adicionar_item_final_lista(lista_encadeada* lista, int valor) {
+    
+    item* novo_item = criar_item();
+
+    novo_item->valor = valor;
+
+    if (lista->inicio == NULL) {
+        lista->inicio = novo_item;
+    } else {
+        item* auxiliar = lista->inicio;
+        while (auxiliar != NULL) {
+            auxiliar = auxiliar->proximo_item;
+        }
+        novo_item->proximo_item = auxiliar;
+    }
+
+
 }
