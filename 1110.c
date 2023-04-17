@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <conio.h>
 
 typedef struct item {
     int valor;
@@ -15,23 +16,47 @@ lista_encadeada* criar_lista_encadeada();
 item* criar_item();
 void adicionar_item_inicio_lista(lista_encadeada* lista, int valor);
 void adicionar_item_final_lista(lista_encadeada* lista, int valor);
+void remover_item_da_lista(lista_encadeada* lista, int valor);
+int mostrar_opções();
+void apertar_qualquer_tecla_para_continuar();
 
 int main() {
 
-    item* primeiro;
-    item* segundo;
+    int estado_do_programa;
+    int parar_programa = 0;
 
-    primeiro = (item*)calloc(1, sizeof(item));
-    segundo = (item*)calloc(1, sizeof(item));
+    do {
+        mostrar_opções();
+    } while (estado_do_programa != parar_programa);
+    
+    // lista_encadeada* nova_lista;
+    // int continuar_programa = 0;
 
-    primeiro->valor = 1;
-    primeiro->proximo_item = segundo;
+    // if (opcao_selecionada == 1) {
+    //     nova_lista = criar_lista_encadeada();
+    //     printf("Lista criada com sucesso!\n");
+    // } else {
+    //     printf("Opcao invalida!\n");
+    // }
 
-    segundo->valor = 22;
-    segundo->proximo_item = NULL;    
+    // apertar_qualquer_tecla_para_continuar();
 
-    printf("%d, %d\n", primeiro->valor, primeiro->proximo_item);
-    printf("%d, %d\n", segundo->valor, segundo->proximo_item);
+    // printf("CRIADOR DE LISTAS\nEscolha uma opcao:\n1 - Adicionar item no inicio da lista\n2 - Adicionar item no final da lista\n3 - Remover item\n");
+    // scanf("%d", &opcao_selecionada);
+    // system("cls");
+
+    // switch (opcao_selecionada) {
+    // case 1:
+    //     int item_a_ser_adicionado;
+    //     printf("Digite o valor do item a ser adicionado:\n");
+    //     scanf("%d", item_a_ser_adicionado);
+    //     adicionar_item_inicio_lista(nova_lista, item_a_ser_adicionado);
+    //     printf("Item adicionado com sucesso no começo da lista;")
+    //     break;
+    // default:
+    //     printf("Opcao invalida!\n");
+    //     break;
+    // }
 
     return 0;
 }
@@ -81,8 +106,29 @@ void adicionar_item_final_lista(lista_encadeada* lista, int valor) {
         while (auxiliar != NULL) {
             auxiliar = auxiliar->proximo_item;
         }
-        novo_item->proximo_item = auxiliar;
+        auxiliar->proximo_item = novo_item;
     }
 
+    lista->quantidade_itens++;
+}
 
+void remover_item_da_lista(lista_encadeada* lista, int valor) {
+    
+    if (lista->inicio == NULL) {
+        return;
+    }
+}
+
+void apertar_qualquer_tecla_para_continuar() {
+    printf("\nPressione qualquer tecla para continuar...\n");
+    getch();
+    system("cls");
+}
+
+int mostrar_opções() {
+    int opcao_selecionada;
+    printf("CRIADOR DE LISTAS\nEscolha uma opcao:\n1 - Criar Lista\n2 - Adicionar item no inicio da lista\n3 - Adicionar item no final da lista\n4 - Remover item\n5 - Mostrar lista\n\n0 - Terminar programa\n");
+    scanf("%d", &opcao_selecionada);
+    system("cls");
+    return opcao_selecionada;
 }
