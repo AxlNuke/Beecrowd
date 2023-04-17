@@ -17,7 +17,7 @@ item* criar_item();
 void adicionar_item_inicio_lista(lista_encadeada* lista, int valor);
 void adicionar_item_final_lista(lista_encadeada* lista, int valor);
 void remover_item_da_lista(lista_encadeada* lista, int valor);
-int mostrar_opções();
+int mostrar_opcoes();
 void apertar_qualquer_tecla_para_continuar();
 
 int main() {
@@ -26,7 +26,15 @@ int main() {
     int parar_programa = 0;
 
     do {
-        mostrar_opções();
+        estado_do_programa = mostrar_opcoes();
+
+        switch (estado_do_programa) {
+        case 1:
+            break;
+        
+        default:
+            break;
+        }
     } while (estado_do_programa != parar_programa);
     
     // lista_encadeada* nova_lista;
@@ -125,7 +133,7 @@ void apertar_qualquer_tecla_para_continuar() {
     system("cls");
 }
 
-int mostrar_opções() {
+int mostrar_opcoes() {
     int opcao_selecionada;
     printf("CRIADOR DE LISTAS\nEscolha uma opcao:\n1 - Criar Lista\n2 - Adicionar item no inicio da lista\n3 - Adicionar item no final da lista\n4 - Remover item\n5 - Mostrar lista\n\n0 - Terminar programa\n");
     scanf("%d", &opcao_selecionada);
