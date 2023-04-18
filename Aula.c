@@ -133,7 +133,7 @@ void apertar_qualquer_tecla_para_continuar() {
 
 int mostrar_opcoes() {
     int opcao_selecionada;
-    printf("PILHA\nEscolha uma opcao:\n1 - Adicionar item\n2 - Remover item\n3 - Buscar item\n4 - Mostrar pilha\n\n0 - Terminar programa\n");
+    printf("PILHA\nEscolha uma opcao:\n1 - Adicionar item\n2 - Remover item\n3 - Buscar item\n4 - Mostrar pilha\n5 - Organizar pilha BubbleSort\n\n0 - Terminar programa\n");
     scanf("%d", &opcao_selecionada);
     system("cls");
     return opcao_selecionada;
