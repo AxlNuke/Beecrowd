@@ -4,29 +4,30 @@
 
 typedef struct item {
     int valor;
-    struct item* proximo_item;
+    struct item *proximo_item;
 } item;
 
 typedef struct lista_encadeada {
     int quantidade_itens;
-    item* inicio;
+    item *inicio;
 } lista_encadeada;
 
-lista_encadeada* criar_lista_encadeada();
-item* criar_item();
-void adicionar_item_inicio_lista(lista_encadeada* lista, int valor);
-void remover_item_da_lista(lista_encadeada* lista);
+lista_encadeada *criar_lista_encadeada();
+item *criar_item();
+void adicionar_item_inicio_lista(lista_encadeada *lista, int valor);
+void remover_item_da_lista(lista_encadeada *lista);
 int mostrar_opcoes();
 void apertar_qualquer_tecla_para_continuar();
-void mostrar_lista(lista_encadeada* lista);
-int buscar_item_na_lista(lista_encadeada* lista, int valor);
+void mostrar_lista(lista_encadeada *lista);
+int buscar_item_na_lista(lista_encadeada *lista, int valor);
+void bubblesort(lista_encadeada *pilha);
 
 
 int main() {
 
     int estado_do_programa;
     int parar_programa = 0;
-    lista_encadeada* pilha = criar_lista_encadeada();
+    lista_encadeada *pilha = criar_lista_encadeada();
     int valor_a_ser_adicionado, valor_a_ser_buscado, valor_encontrado;
 
     do {
@@ -87,25 +88,25 @@ int main() {
     return 0;
 }
 
-lista_encadeada* criar_lista_encadeada() {
+lista_encadeada *criar_lista_encadeada() {
 
-    lista_encadeada* nova_lista;
+    lista_encadeada *nova_lista;
     nova_lista = (lista_encadeada*)calloc(1, sizeof(lista_encadeada));
 
     return nova_lista;
 }
 
-item* criar_item() {
+item *criar_item() {
 
-    item* novo_item;
+    item *novo_item;
     novo_item = (item*)calloc(1, sizeof(item));
 
     return novo_item;
 }
 
-void adicionar_item_inicio_lista(lista_encadeada* lista, int valor) {
+void adicionar_item_inicio_lista(lista_encadeada *lista, int valor) {
 
-    item* novo_item = criar_item();
+    item *novo_item = criar_item();
 
     novo_item->valor = valor;
     
@@ -119,8 +120,8 @@ void adicionar_item_inicio_lista(lista_encadeada* lista, int valor) {
     lista->quantidade_itens++;
 }
 
-void remover_item_da_lista(lista_encadeada* lista) {
-    item* auxiliar = lista->inicio;
+void remover_item_da_lista(lista_encadeada *lista) {
+    item *auxiliar = lista->inicio;
     lista->inicio = auxiliar->proximo_item;
     free(auxiliar);
 }
@@ -139,16 +140,16 @@ int mostrar_opcoes() {
     return opcao_selecionada;
 }
 
-void mostrar_lista(lista_encadeada* lista) {
-    item* item_a_mostrar = lista->inicio;
+void mostrar_lista(lista_encadeada *lista) {
+    item *item_a_mostrar = lista->inicio;
     while (item_a_mostrar != NULL) {
         printf("%d ", item_a_mostrar->valor);
         item_a_mostrar = item_a_mostrar->proximo_item;
     }
 }
 
-int buscar_item_na_lista(lista_encadeada* lista, int valor) {
-    item* item_atual = lista->inicio;
+int buscar_item_na_lista(lista_encadeada *lista, int valor) {
+    item *item_atual = lista->inicio;
     while (item_atual != NULL) {
         if (item_atual->valor == valor) {
             return item_atual->valor;
@@ -156,4 +157,20 @@ int buscar_item_na_lista(lista_encadeada* lista, int valor) {
         item_atual = item_atual->proximo_item;
     }
     return 0;
+}
+
+void bublesort(lista_encadeada *pilha) {
+    if (pilha->inicio == NULL)  {
+        printf("Pilha Vazia!"); }
+    item *aux1, *aux2;
+    int guarda_valor;
+    for (aux1 = pilha->inicio; aux1 != NULL; aux1 = aux1->proximo_item) {
+    for (aux2 = aux1->proximo_item; aux2 != NULL; aux2 = aux2->proximo_item) {
+        if (aux1->valor > aux2->valor) {
+        guarda_valor = aux1->valor;
+        aux1->valor = aux2->valor;
+        aux2->valor = guarda_valor;
+        }
+    }
+    }
 }
