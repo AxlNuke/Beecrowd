@@ -80,7 +80,7 @@ int main() {
             break;
         case 5:
             bubblesort(pilha);
-            printf("Pilha organizada!\n");
+            printf("Pilha organizada usando Bubble Sort!\n");
             break;
         default:
             printf("Opcao invalida!\n");
@@ -138,7 +138,14 @@ void apertar_qualquer_tecla_para_continuar() {
 
 int mostrar_opcoes() {
     int opcao_selecionada;
-    printf("PILHA\nEscolha uma opcao:\n1 - Adicionar item\n2 - Remover item\n3 - Buscar item\n4 - Mostrar pilha\n5 - Organizar pilha BubbleSort\n\n0 - Terminar programa\n");
+    printf("PILHA\n");
+    printf("Escolha uma opcao:\n");
+    printf("1 - Adicionar item\n");
+    printf("2 - Remover item\n");
+    printf("3 - Buscar item\n");
+    printf("4 - Mostrar pilha\n");
+    printf("5 - Organizar pilha usando (BubbleSort)\n");
+    printf("\n0 - Terminar programa\n");
     scanf("%d", &opcao_selecionada);
     system("cls");
     return opcao_selecionada;
@@ -163,18 +170,18 @@ int buscar_item_na_lista(lista_encadeada *lista, int valor) {
     return 0;
 }
 
-void bubblesort(lista_encadeada *pilha) {
-    if (pilha->inicio == NULL)  {
+void bubblesort(lista_encadeada *lista) {
+    if (lista->inicio == NULL)  {
         printf("Pilha Vazia!"); }
     item *aux1, *aux2;
     int guarda_valor;
-    for (aux1 = pilha->inicio; aux1 != NULL; aux1 = aux1->proximo_item) {
-    for (aux2 = aux1->proximo_item; aux2 != NULL; aux2 = aux2->proximo_item) {
-        if (aux1->valor > aux2->valor) {
-        guarda_valor = aux1->valor;
-        aux1->valor = aux2->valor;
-        aux2->valor = guarda_valor;
+    for (aux1 = lista->inicio; aux1 != NULL; aux1 = aux1->proximo_item) {
+        for (aux2 = aux1->proximo_item; aux2 != NULL; aux2 = aux2->proximo_item) {
+            if (aux1->valor > aux2->valor) {
+                guarda_valor = aux1->valor;
+                aux1->valor = aux2->valor;
+                aux2->valor = guarda_valor;
+            }
         }
-    }
     }
 }
