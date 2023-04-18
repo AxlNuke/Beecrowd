@@ -78,6 +78,10 @@ int main() {
                 printf("\n");
             }
             break;
+        case 5:
+            bubblesort(pilha);
+            printf("Pilha organizada!\n");
+            break;
         default:
             printf("Opcao invalida!\n");
             break;
@@ -159,7 +163,7 @@ int buscar_item_na_lista(lista_encadeada *lista, int valor) {
     return 0;
 }
 
-void bublesort(lista_encadeada *pilha) {
+void bubblesort(lista_encadeada *pilha) {
     if (pilha->inicio == NULL)  {
         printf("Pilha Vazia!"); }
     item *aux1, *aux2;
