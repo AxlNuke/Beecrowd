@@ -19,34 +19,33 @@ void remover_item_da_lista(lista_encadeada *lista);
 int mostrar_opcoes();
 void apertar_qualquer_tecla_para_continuar();
 void mostrar_lista(lista_encadeada *lista);
-item *buscar_item_na_lista(lista_encadeada *lista, int valor);
+int buscar_item_na_lista(lista_encadeada *lista, int valor);
 void bubblesort(lista_encadeada *pilha);
 
 
 int main() {
 
-    int quantidade_de_itens_a_serem_adicionados, valor_a_ser_adicionado, valor_a_ser_buscado;
-    int estado_atual_do_programa = -1, parar_programa = 0;
-    item *item_encontrado;
+    int estado_do_programa;
+    int parar_programa = 0;
     lista_encadeada *pilha = criar_lista_encadeada();
+    int valor_a_ser_adicionado, valor_a_ser_buscado, valor_encontrado;
 
-    while (estado_atual_do_programa != parar_programa) {
+    do {
+        estado_do_programa = mostrar_opcoes();
 
-        estado_atual_do_programa = mostrar_opcoes();
-
-        switch (estado_atual_do_programa) {
+        switch (estado_do_programa) {
         case 0:
-            printf("Encerrando programa.\n");
+            printf("Encerrando programa!\n");
             break;
         case 1:
-                printf("Digite quantos itens voce quer adicionar:\n");
-                scanf("%d", &quantidade_de_itens_a_serem_adicionados);
-                for (int i = 0; i < quantidade_de_itens_a_serem_adicionados; i++) {
-                    printf("Digite o %d valor: ", i+1);
-                    scanf("%d", &valor_a_ser_adicionado);
+                printf("Digite um valor a ser adicionado:\n");
+                scanf("%d", &valor_a_ser_adicionado);
+                if (valor_a_ser_adicionado == 0) {
+                    printf("O valor não pode ser nulo.\n");
+                } else {
                     adicionar_item_inicio_lista(pilha, valor_a_ser_adicionado);
+                    printf("Valor adicionado com sucesso na pilha!\n");
                 }
-                printf("Valor(es) adicionado(s) com sucesso na pilha!\n");
             break;
         case 2:
             if (pilha->inicio == NULL) {
@@ -62,11 +61,11 @@ int main() {
             } else {
                 printf("Digite um valor a ser buscado na pilha:\n");
                 scanf("%d", &valor_a_ser_buscado);
-                item_encontrado = buscar_item_na_lista(pilha, valor_a_ser_buscado);
-                if (item_encontrado == NULL) {
+                valor_encontrado = buscar_item_na_lista(pilha, valor_a_ser_buscado);
+                if (valor_encontrado == 0) {
                     printf("Valor %d nao existe na pilha!\n", valor_a_ser_buscado);
                 } else {
-                    printf("Valor %d foi encontrado na pilha!\n", item_encontrado->valor);
+                    printf("Valor %d foi encontrado na pilha!\n", valor_a_ser_buscado);
                 }
             }
             break;
@@ -88,7 +87,7 @@ int main() {
             break;
         }
         apertar_qualquer_tecla_para_continuar();
-    }
+    } while (estado_do_programa != parar_programa);
 
     return 0;
 }
@@ -160,15 +159,15 @@ void mostrar_lista(lista_encadeada *lista) {
     }
 }
 
-item *buscar_item_na_lista(lista_encadeada *lista, int valor) {
+int buscar_item_na_lista(lista_encadeada *lista, int valor) {
     item *item_atual = lista->inicio;
     while (item_atual != NULL) {
         if (item_atual->valor == valor) {
-            return item_atual;
+            return item_atual->valor;
         }
         item_atual = item_atual->proximo_item;
     }
-    return NULL;
+    return 0;
 }
 
 void bubblesort(lista_encadeada *lista) {
