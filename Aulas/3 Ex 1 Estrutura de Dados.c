@@ -1,3 +1,8 @@
+// Faça um programa que aloque 1 lista encadeada e inclua nessa lista todos os números primos entre 1 e 100.
+// No mesmo programa utilize uma lista duplamente ligada que possua todos os números ímpares entre 50 e 100.
+
+// Mostre na tela os valores que estão presentes nas 2 listas ao mesmo tempo.
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
