@@ -34,6 +34,8 @@ lista_encadeada_simples *criar_lista_encadeada_simples();
 lista_duplamente_encadeada *criar_lista_duplamente_encadeada();
 item_encadeado_simples *criar_item_encadeado_simples();
 item_duplamente_encadeado *criar_item_duplamente_encadeado();
+void adicionar_primos_na_lista_encadeada_simples(lista_encadeada_simples lista);
+void adicionar_primos_na_lista_duplamente_encadeada(lista_duplamente_encadeada lista);
 
 int main() {
     return 0;
@@ -63,3 +65,18 @@ lista_duplamente_encadeada *criar_lista_duplamente_encadeada() {
     nova_lista = (lista_duplamente_encadeada*)calloc(1, sizeof(lista_duplamente_encadeada));
     return nova_lista;
 }
+
+item_encadeado_simples *criar_item_encadeado_simples() {
+    item_encadeado_simples *novo_item;
+    novo_item = (item_encadeado_simples*)calloc(1, sizeof(item_encadeado_simples));
+    return novo_item;
+}
+
+item_duplamente_encadeado *criar_item_duplamente_encadeado() {
+    item_duplamente_encadeado *novo_item;
+    novo_item = (item_duplamente_encadeado*)calloc(1, sizeof(item_duplamente_encadeado));
+    return novo_item;
+}
+
+void adicionar_primos_na_lista_encadeada_simples(lista_encadeada_simples lista);
+void adicionar_primos_na_lista_duplamente_encadeada(lista_duplamente_encadeada lista);
